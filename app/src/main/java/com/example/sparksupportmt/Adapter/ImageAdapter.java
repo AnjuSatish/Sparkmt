@@ -34,17 +34,18 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         User hero = imageList.get(position);
 
-        Glide.with(mCtx)
-                .load(hero.getImage())
-                .placeholder( R.drawable.im3 )
-                .into(holder.imageView);
+        Glide.with(mCtx).load("http://192.168.0.100/api/images/"+imageList.get(position).getImage()).into(holder.imageView);
+
 
 
     }
 
     @Override
     public int getItemCount() {
-        return imageList.size();
+        if(this.imageList!=null)
+            return this.imageList.size();
+        else
+            return 0;
     }
 
     public class ImageViewHolder extends RecyclerView.ViewHolder {
