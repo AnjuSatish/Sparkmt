@@ -62,19 +62,24 @@ public class LoginActivity extends AppCompatActivity {
                 bLogin.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(!validateName() | ! validatepass())
-                        {
-                            return;
-                        }
-                        mViewModel1.login(etEmail.getText().toString(), etPassword.getText().toString());
-                       if(etPassword  !=null && etEmail !=null){
-                           Intent i = new Intent(getApplicationContext(),MainActivity.class);
-                           startActivity(i);
+                        String username=etEmail.getText().toString();
+                        String password=etPassword.getText().toString();
+                        if(validateLogin(username, password)) {
+                            //do login
+                            mViewModel1.login(etEmail.getText().toString(), etPassword.getText().toString());
+                            Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                            startActivity(i);
+                            Toast.makeText( LoginActivity.this, "Login Success", Toast.LENGTH_SHORT ).show();
 
-                       }
+
+                        }
+                           // mViewModel1.login(etEmail.getText().toString(), etPassword.getText().toString());
+
                        else{
                            Toast.makeText( LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT ).show();
                        }
+
+
                     }
                 });
 
@@ -93,56 +98,15 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
-    private boolean validateName() {
-        String val = ((EditText) findViewById( R.id.login_email_et )).getText().toString();
-        String noWhitespace = "(?=\\+$&)";
-        if (val.isEmpty()) {
-            ((EditText) findViewById( R.id.login_email_et )).setError( "Field cannot be empty" );
+    private boolean validateLogin(String username, String password){
+        if(username == null || username.trim().length() == 0){
+            Toast.makeText(this, "Username is required", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (val.length() >= 15) {
-            ((EditText) findViewById( R.id.login_email_et )).setError( "Username too long" );
-            return false;
-        } else {
-            ((EditText) findViewById( R.id.login_email_et )).setError( null );
-            return true;
         }
-    }
-    private boolean validatepass() {
-        String val = ((EditText) findViewById( R.id.login_password_et )).getText().toString();
-
-        if (val.isEmpty()) {
-            ((EditText) findViewById( R.id.login_password_et )).setError( "Field cannot be empty" );
+        if(password == null || password.trim().length() == 0){
+            Toast.makeText(this, "Password is required", Toast.LENGTH_SHORT).show();
             return false;
-        } else {
-            ((EditText) findViewById( R.id.login_password_et )).setError( null );
-            return true;
         }
+        return true;
     }
-
-
-//    private boolean validateName() {
-//        String val = ((EditText) findViewById( R.id.login_email_et )).getText().toString();
-//        String noWhitespace = "(?=\\+$&)";
-//        if (val.isEmpty()) {
-//            ((EditText) findViewById( R.id.login_email_et )).setError( "Field cannot be empty" );
-//            return false;
-//        } else if (val.length() >= 15) {
-//            ((EditText) findViewById( R.id.login_email_et )).setError( "Username too long" );
-//            return false;
-//        } else {
-//            ((EditText) findViewById( R.id.login_email_et )).setError( null );
-//            return true;
-//        }
-//    }
-//    private boolean validatepass() {
-//        String val = ((EditText) findViewById( R.id.login_password_et )).getText().toString();
-//
-//        if (val.isEmpty()) {
-//            ((EditText) findViewById( R.id.login_password_et )).setError( "Field cannot be empty" );
-//            return false;
-//        } else {
-//            ((EditText) findViewById( R.id.login_password_et )).setError( null );
-//            return true;
-//        }
-//    }
     }
