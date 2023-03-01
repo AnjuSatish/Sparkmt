@@ -23,7 +23,7 @@
         android:id="@+id/login_email_et"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:hint="User Email"
+        android:hint="User Name"
         android:textColorHint="@color/grey"
         android:layout_margin="10dp"
         android:inputType="textEmailAddress"

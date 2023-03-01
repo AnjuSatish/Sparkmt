@@ -37,7 +37,7 @@ public class ImageViewModel extends ViewModel {
                 .build();
 
         ImageResponse api = retrofit.create(ImageResponse.class);
-        Call<List<User>> call = api.getUsers();
+        Call<List<User>> call = api.getUsers("Authorization");
         call.enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {

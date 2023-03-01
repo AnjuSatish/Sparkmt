@@ -22,22 +22,17 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         this.mCtx = mCtx;
         this.imageList = imageList;
     }
-
     @NonNull
     @Override
     public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mCtx).inflate( R.layout.recycle_layout, parent, true);
         return new ImageViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         User hero = imageList.get(position);
 
-        Glide.with(mCtx).load("http://192.168.0.100/api/images/"+imageList.get(position).getImage()).into(holder.imageView);
-
-
-
+        Glide.with(mCtx).load("http://54.36.143.60:8000/dashboard/"+imageList.get(position).getImage_link()).into(holder.imageView);
     }
 
     @Override

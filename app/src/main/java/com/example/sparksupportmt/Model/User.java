@@ -4,21 +4,12 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class User {
+    private String image_link;
 
-
-    private String image;
-
-
-
-    public User(String image) {
-
-
-        this.image = image;
-
+    public User(String image_link) {
+        this.image_link = image_link;
     }
-    public String getImage() {
-        return image;
+    public String getImage_link() {
+        return image_link;
     }
-
-
     }
