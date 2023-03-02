@@ -59,6 +59,7 @@ public class MainViewModel extends ViewModel {
     }
 
     public void login(String username, String password) {
+
         mProgressMutableData.postValue(View.VISIBLE);
         mMainRepository.loginRemote(new LoginBody(username, password), new MainRepository.ILoginResponse() {
             @Override

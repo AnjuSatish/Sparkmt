@@ -1,9 +1,6 @@
 package com.example.sparksupportmt.Activities;
 
-import static androidx.constraintlayout.motion.widget.TransitionBuilder.validate;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -18,10 +15,6 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.sparksupportmt.Model.LoginBody;
-import com.example.sparksupportmt.Model.RegisterBody;
-import com.example.sparksupportmt.Response.LoginResponse;
-import com.example.sparksupportmt.Response.RegisterResponse;
 import com.example.sparksupportmt.ViewModel.MainViewModel;
 import com.example.sparksupportmt.R;
 
@@ -73,11 +66,11 @@ public class LoginActivity extends AppCompatActivity {
 
 
                         }
-                           // mViewModel1.login(etEmail.getText().toString(), etPassword.getText().toString());
+                        // mViewModel1.login(etEmail.getText().toString(), etPassword.getText().toString());
 
-                       else{
-                           Toast.makeText( LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT ).show();
-                       }
+                        else{
+                            Toast.makeText( LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT ).show();
+                        }
 
 
                     }
@@ -109,4 +102,4 @@ public class LoginActivity extends AppCompatActivity {
         }
         return true;
     }
-    }
+}

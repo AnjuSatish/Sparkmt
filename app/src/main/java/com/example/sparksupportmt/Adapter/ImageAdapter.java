@@ -1,6 +1,7 @@
 package com.example.sparksupportmt.Adapter;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,38 +17,47 @@ import com.example.sparksupportmt.R;
 import java.util.List;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
-    Context mCtx;
-    List<User> imageList;
-    public ImageAdapter(Context mCtx, List<User> imageList) {
-        this.mCtx = mCtx;
-        this.imageList = imageList;
+    private List<User> images;
+    private Context context;
+
+    public ImageAdapter(Context context, List<User> images) {
+        this.context = context;
+        this.images = images;
     }
+
+
     @NonNull
     @Override
-    public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mCtx).inflate( R.layout.recycle_layout, parent, true);
+    public ImageAdapter.ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.recycle_layout, parent, false);
         return new ImageViewHolder(view);
     }
-    @Override
-    public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
-        User hero = imageList.get(position);
 
-        Glide.with(mCtx).load("http://54.36.143.60:8000/dashboard/"+imageList.get(position).getImage_link()).into(holder.imageView);
+    @Override
+    public void onBindViewHolder(@NonNull ImageAdapter.ImageViewHolder holder, int position) {
+        User user = images.get(position);
+
+        Glide.with(context).load(user.getImage_link()).into(holder.imageView);
+
     }
 
     @Override
     public int getItemCount() {
-        if(this.imageList!=null)
-            return this.imageList.size();
+        if(this.images!=null)
+            return this.images.size();
         else
             return 0;
     }
 
+
+
     public class ImageViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageView;
+        private ImageView imageView;
+
         public ImageViewHolder(@NonNull View itemView) {
-            super(itemView);
+            super( itemView );
             imageView = itemView.findViewById(R.id.imageView);
+
         }
     }
 }
